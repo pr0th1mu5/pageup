@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* PageUp Landing Page Design System - Inspired by vibrant yellow, blue, and white theme */
+
+@layer base {
+  :root {
+    /* Brand Colors - Yellow, Blue, White Theme */
+    --background: 0 0% 100%;
+    --foreground: 220 100% 20%;
+    
+    /* Primary - Vibrant Blue */
+    --primary: 220 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 220 100% 40%;
+    
+    /* Secondary - Bright Yellow */  
+    --secondary: 45 100% 60%;
+    --secondary-foreground: 220 100% 20%;
+    --secondary-hover: 45 100% 50%;
+    
+    /* Accent - Softer Yellow */
+    --accent: 48 100% 70%;
+    --accent-foreground: 220 100% 20%;
+    
+    /* Neutral Colors */
+    --muted: 210 20% 95%;
+    --muted-foreground: 220 20% 50%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 220 100% 20%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 100% 20%;
+    
+    --border: 210 20% 90%;
+    --input: 210 20% 95%;
+    --ring: 220 100% 50%;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(45 100% 60%), hsl(220 100% 50%));
+    --gradient-section: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 20% 98%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(210 20% 96%));
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 20px hsl(220 100% 50% / 0.1);
+    --shadow-medium: 0 8px 30px hsl(220 100% 50% / 0.15);
+    --shadow-strong: 0 20px 40px hsl(220 100% 50% / 0.2);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    --radius: 1rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    
+    --primary: 220 100% 60%;
+    --primary-foreground: 220 100% 20%;
+    --primary-hover: 220 100% 50%;
+    
+    --secondary: 45 100% 70%;
+    --secondary-foreground: 220 100% 20%;
+    --secondary-hover: 45 100% 60%;
+    
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    
+    --accent: 48 100% 75%;
+    --accent-foreground: 220 100% 20%;
+    
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 220 100% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+  }
+}
+
+@layer components {
+  /* Typography */
+  .text-hero {
+    @apply text-5xl md:text-6xl lg:text-7xl font-bold font-poppins leading-tight;
+  }
+  
+  .text-section-title {
+    @apply text-3xl md:text-4xl font-bold font-poppins;
+  }
+  
+  .text-card-title {
+    @apply text-xl font-semibold font-poppins;
+  }
+
+  /* Button Variants */
+  .btn-hero {
+    @apply bg-gradient-to-r from-secondary to-secondary-hover text-secondary-foreground px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg;
+  }
+  
+  .btn-primary {
+    @apply bg-primary hover:bg-primary-hover text-primary-foreground px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105;
+  }
+
+  /* Card Styles */
+  .card-gradient {
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-soft);
+    @apply rounded-2xl p-6 transition-all duration-300 hover:scale-105;
+  }
+  
+  .card-gradient:hover {
+    box-shadow: var(--shadow-medium);
+  }
+
+  /* Section Backgrounds */
+  .section-gradient {
+    background: var(--gradient-section);
+  }
+
+  /* Animations */
+  .fade-in-up {
+    @apply opacity-0 translate-y-8 transition-all duration-700 ease-out;
+  }
+  
+  .fade-in-up.in-view {
+    @apply opacity-100 translate-y-0;
+  }
+  
+  .bounce-hover {
+    @apply transition-transform duration-300 hover:scale-110;
+  }
+
+  /* Navigation */
+  .nav-link {
+    @apply relative font-medium transition-colors duration-300 hover:text-primary;
+  }
+  
+  .nav-link::after {
+    @apply content-[''] absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300;
+  }
+  
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  /* FAQ Accordion */
+  .accordion-item {
+    @apply border border-border rounded-lg mb-4 overflow-hidden;
+  }
+  
+  .accordion-header {
+    @apply bg-muted p-4 cursor-pointer flex justify-between items-center font-medium hover:bg-accent transition-colors duration-300;
+  }
+  
+  .accordion-content {
+    @apply p-4 bg-background max-h-0 overflow-hidden transition-all duration-300;
+  }
+  
+  .accordion-content.open {
+    @apply max-h-96;
+  }
+}
