@@ -1,9 +1,12 @@
 {
+  "home":"https://pr0th1mu5.github.io/pageup",
   "name": "vite_react_shadcn_ts",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d build",
     "dev": "vite",
     "build": "vite build",
     "build:dev": "vite build --mode development",
